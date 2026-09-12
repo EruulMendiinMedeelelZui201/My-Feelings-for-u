@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,11 +18,12 @@ html, body {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: Georgia, "Times New Roman", serif;
   color: white;
   background:
     radial-gradient(circle at 50% 40%, #351333 0%, #170d25 38%, #05050d 100%);
+  min-height: 100vh;
 }
 
 /* =========================
@@ -33,6 +34,8 @@ body {
   position: fixed;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .star {
@@ -62,9 +65,9 @@ body {
 .moon {
   position: fixed;
   top: 7%;
-  right: 9%;
-  width: 90px;
-  height: 90px;
+  right: 5%;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #fff5f8;
   box-shadow:
@@ -79,10 +82,24 @@ body {
   position: absolute;
   top: -8px;
   left: -12px;
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #11091c;
+}
+
+@media (max-width: 480px) {
+  .moon {
+    width: 50px;
+    height: 50px;
+    top: 5%;
+    right: 3%;
+  }
+
+  .moon::after {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 /* =========================
@@ -96,10 +113,10 @@ body {
   pointer-events: none;
   animation: fall linear infinite;
   opacity: 0;
+  font-size: 30px;
 }
 
 @keyframes fall {
-
   0% {
     transform:
       translateY(-50px)
@@ -136,12 +153,10 @@ body {
   position: relative;
   z-index: 5;
   width: 100%;
-  height: 100vh;
-
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 20px;
 }
 
@@ -149,29 +164,28 @@ body {
   width: min(700px, 94vw);
   max-height: 90vh;
   overflow-y: auto;
-
   padding: 45px 35px;
-
   text-align: center;
-
   border-radius: 30px;
-
   background: rgba(255,255,255,0.065);
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   border: 1px solid rgba(255,255,255,0.15);
-
   box-shadow:
     0 0 60px rgba(255,60,150,0.15),
     inset 0 0 40px rgba(255,255,255,0.025);
-
   animation: entrance 2s ease forwards;
 }
 
-@keyframes entrance {
+@media (max-width: 480px) {
+  .card {
+    padding: 30px 20px;
+    border-radius: 20px;
+    max-height: 95vh;
+  }
+}
 
+@keyframes entrance {
   from {
     opacity: 0;
     transform:
@@ -200,10 +214,8 @@ body {
 }
 
 h1 {
-  font-size: clamp(50px, 11vw, 82px);
-
+  font-size: clamp(36px, 10vw, 82px);
   margin-bottom: 10px;
-
   background:
     linear-gradient(
       90deg,
@@ -212,12 +224,10 @@ h1 {
       #ff659d,
       #ffffff
     );
-
   background-size: 300%;
-
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
+  background-clip: text;
   animation: shine 6s linear infinite;
 }
 
@@ -233,7 +243,7 @@ h1 {
 
 .subtitle {
   color: #dcbecf;
-  font-size: 17px;
+  font-size: clamp(14px, 4vw, 17px);
   font-style: italic;
   margin-bottom: 32px;
 }
@@ -243,23 +253,17 @@ h1 {
 ========================= */
 
 .heart {
-  width: 70px;
-  height: 70px;
-
+  width: 60px;
+  height: 60px;
   position: relative;
-
   margin: 0 auto 35px;
-
   transform: rotate(-45deg);
-
   background: linear-gradient(
     135deg,
     #ff174f,
     #ff69a5
   );
-
   animation: heartbeat 1.5s infinite;
-
   box-shadow:
     0 0 20px #ff3f7f,
     0 0 50px rgba(255,50,130,0.5);
@@ -269,27 +273,23 @@ h1 {
 .heart::after {
   content: "";
   position: absolute;
-
-  width: 70px;
-  height: 70px;
-
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-
   background: inherit;
 }
 
 .heart::before {
-  top: -35px;
+  top: -30px;
   left: 0;
 }
 
 .heart::after {
-  left: 35px;
+  left: 30px;
   top: 0;
 }
 
 @keyframes heartbeat {
-
   0%, 100% {
     transform:
       rotate(-45deg)
@@ -322,10 +322,8 @@ h1 {
 .letter {
   max-width: 590px;
   margin: auto;
-
   color: #f7eaf1;
-
-  font-size: 17px;
+  font-size: clamp(15px, 4vw, 17px);
   line-height: 1.9;
 }
 
@@ -345,9 +343,7 @@ h1 {
 .divider {
   width: 100px;
   height: 1px;
-
   margin: 30px auto;
-
   background:
     linear-gradient(
       90deg,
@@ -359,13 +355,140 @@ h1 {
 
 .signature {
   margin-top: 30px;
-
-  font-size: 22px;
-
+  font-size: clamp(18px, 5vw, 22px);
   color: #ff9fc7;
-
   font-style: italic;
 }
 
 .final {
+  color: #ffb3d1;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Scrollbar styling */
+.card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 165, 0.5);
+  border-radius: 10px;
+}
+
+.card::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 165, 0.8);
+}
+
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+<div class="moon"></div>
+
+<div class="container">
+  <div class="card">
+    <div class="label">A Message For You</div>
+    
+    <h1>I Love You ❤️</h1>
+    
+    <div class="heart"></div>
+    
+    <p class="subtitle">More than words can say</p>
+    
+    <div class="letter">
+      <p>
+        <span class="highlight">Aren</span>, I wanted to take a moment to tell you something that's been on my heart.
+      </p>
+      
+      <p>
+        Every day with you means the world to me. Your smile lights up my entire world, and I find myself constantly grateful for the moments we share together.
+      </p>
+      
+      <p>
+        You make me want to be better, to love deeper, and to cherish every second. The way you see the world with such kindness and warmth inspires me more than you could ever know.
+      </p>
+      
+      <div class="divider"></div>
+      
+      <p>
+        <span class="highlight">You are my person.</span>
+      </p>
+      
+      <p>
+        In the quiet moments and the exciting adventures, with you is where I want to be. Thank you for being you, for loving me, and for making my life infinitely better.
+      </p>
+      
+      <p class="soft">
+        You are my love, my dream, my everything.
+      </p>
+      
+      <div class="divider"></div>
+      
+      <div class="signature">
+        Forever yours ✨
+      </div>
+      
+      <div class="final">
+        💕 Always & Forever 💕
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Create stars
+function createStars() {
+  const starsContainer = document.getElementById('stars');
+  const starCount = window.innerWidth > 768 ? 100 : 50;
   
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.width = Math.random() * 3 + 'px';
+    star.style.height = star.style.width;
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 2 + 's';
+    starsContainer.appendChild(star);
+  }
+}
+
+// Create falling petals
+function createPetal() {
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.textContent = '🌹';
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+  petal.style.animationDelay = Math.random() * 2 + 's';
+  
+  document.body.appendChild(petal);
+  
+  setTimeout(() => {
+    petal.remove();
+  }, 7000);
+}
+
+// Initialize
+createStars();
+
+// Create petals every 2 seconds
+setInterval(createPetal, 2000);
+
+// Responsive adjustments
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 480) {
+    // Mobile optimizations already in CSS
+  }
+});
+</script>
+
+</body>
+</html>
