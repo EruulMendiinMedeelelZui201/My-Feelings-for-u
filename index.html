@@ -232,6 +232,39 @@ body {
     0 0 60px rgba(255,60,150,0.15),
     inset 0 0 40px rgba(255,255,255,0.025);
   animation: entrance 2s ease forwards;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow:
+    0 0 80px rgba(255,60,150,0.25),
+    inset 0 0 40px rgba(255,255,255,0.035);
+  transform: scale(1.02);
+}
+
+.card.hidden {
+  animation: hideCard 1s ease forwards;
+}
+
+@keyframes hideCard {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-50px);
+  }
+}
+
+.card-content {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.card.hidden .card-content {
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
@@ -455,6 +488,39 @@ h1 {
   font-size: clamp(16px, 4vw, 18px);
 }
 
+/* Hint text */
+.hint {
+  color: #ff9fc5;
+  font-size: clamp(12px, 2.5vw, 14px);
+  margin-top: 30px;
+  opacity: 0.7;
+  animation: pulse 2s infinite;
+  font-style: italic;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Hidden link styling */
+.hidden-link {
+  color: #ff9fc5;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.hidden-link:hover {
+  color: #ffb3d1;
+  text-shadow: 0 0 10px rgba(255, 159, 197, 0.5);
+}
+
 /* Scrollbar styling */
 .card::-webkit-scrollbar {
   width: 6px;
@@ -491,50 +557,54 @@ h1 {
 <div class="moon"></div>
 
 <div class="container">
-  <div class="card">
-    <div class="label">A Message For You</div>
-    
-    <h1>I Love You ❤️</h1>
-    
-    <div class="heart"></div>
-    
-    <p class="subtitle">More than words can say</p>
-    
-    <div class="letter">
-      <p>
-        <span class="highlight">Aren</span>, I wanted to take a moment to tell you something that's been on my heart.
-      </p>
+  <div class="card" id="mainCard">
+    <div class="card-content">
+      <div class="label">A Message For You</div>
       
-      <p>
-        Every day with you means the world to me. Your smile lights up my entire world, and I find myself constantly grateful for the moments we share together.
-      </p>
+      <h1>I Love You ❤️</h1>
       
-      <p>
-        You make me want to be better, to love deeper, and to cherish every second. The way you see the world with such kindness and warmth inspires me more than you could ever know.
-      </p>
+      <div class="heart"></div>
       
-      <div class="divider"></div>
+      <p class="subtitle">More than words can say</p>
       
-      <p>
-        <span class="highlight">You are my person.</span>
-      </p>
-      
-      <p>
-        In the quiet moments and the exciting adventures, with you is where I want to be. Thank you for being you, for loving me, and for making my life infinitely better.
-      </p>
-      
-      <p class="soft">
-        You are my love, my dream, my everything.
-      </p>
-      
-      <div class="divider"></div>
-      
-      <div class="signature">
-        Forever yours ✨
-      </div>
-      
-      <div class="final">
-        💕 Always & Forever 💕
+      <div class="letter">
+        <p>
+          <span class="highlight">Aren</span>, I wanted to take a moment to tell you something that's been on my heart.
+        </p>
+        
+        <p>
+          Every day with you means the world to me. Your smile lights up my entire world, and I find myself constantly grateful for the moments we share together.
+        </p>
+        
+        <p>
+          You make me want to be better, to love deeper, and to cherish every second. The way you see the world with such kindness and warmth inspires me more than you could ever know.
+        </p>
+        
+        <div class="divider"></div>
+        
+        <p>
+          <span class="highlight">You are my person.</span>
+        </p>
+        
+        <p>
+          In the quiet moments and the exciting adventures, with you is where I want to be. Thank you for being you, for loving me, and for making my life infinitely better.
+        </p>
+        
+        <p class="soft">
+          You are my love, my dream, my everything.
+        </p>
+        
+        <div class="divider"></div>
+        
+        <div class="signature">
+          Forever yours ✨
+        </div>
+        
+        <div class="final">
+          💕 Always & Forever 💕
+        </div>
+        
+        <div class="hint">✨ Click the letter to reveal more ✨</div>
       </div>
     </div>
   </div>
@@ -574,6 +644,49 @@ function createPetal() {
     petal.remove();
   }, 7000);
 }
+
+// Handle card click to reveal hidden link
+document.getElementById('mainCard').addEventListener('click', function() {
+  // Add animation class
+  this.classList.add('hidden');
+  
+  // After animation, show the hidden link
+  setTimeout(() => {
+    document.querySelector('.card-content').innerHTML = `
+      <div class="label">You Found It! 💕</div>
+      
+      <h1>Open Me ✨</h1>
+      
+      <div class="heart"></div>
+      
+      <p class="subtitle">Click below to continue our story</p>
+      
+      <div class="letter">
+        <p class="soft">
+          I've hidden a little surprise just for you...
+        </p>
+        
+        <div class="divider"></div>
+        
+        <p>
+          <a href="secret.html" class="hidden-link">💌 Open Your Secret Letter 💌</a>
+        </p>
+        
+        <div class="divider"></div>
+        
+        <p class="soft">
+          I love you so much...
+        </p>
+      </div>
+    `;
+    
+    // Remove hidden class to show new content
+    document.getElementById('mainCard').classList.remove('hidden');
+  }, 500);
+  
+  // Prevent event bubbling
+  event.stopPropagation();
+});
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
