@@ -521,6 +521,42 @@ h1 {
   text-shadow: 0 0 10px rgba(255, 159, 197, 0.5);
 }
 
+/* Large letter styling */
+.large-letter {
+  font-size: clamp(80px, 20vw, 150px);
+  margin: 30px 0;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.click-link {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #ff174f, #ff69a5);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: clamp(14px, 3vw, 18px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 60, 150, 0.5);
+  cursor: pointer;
+}
+
+.click-link:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(255, 60, 150, 0.8);
+}
+
 /* Scrollbar styling */
 .card::-webkit-scrollbar {
   width: 6px;
@@ -559,52 +595,70 @@ h1 {
 <div class="container">
   <div class="card" id="mainCard">
     <div class="card-content">
-      <div class="label">A Message For You</div>
-      
-      <h1>I Love You ❤️</h1>
-      
-      <div class="heart"></div>
-      
-      <p class="subtitle">More than words can say</p>
-      
-      <div class="letter">
-        <p>
-          <span class="highlight">Aren</span>, I wanted to take a moment to tell you something that's been on my heart.
-        </p>
+      <!-- INITIAL STATE: Large Letter -->
+      <div id="letterState">
+        <div class="label">You Have A Letter</div>
         
-        <p>
-          Every day with you means the world to me. Your smile lights up my entire world, and I find myself constantly grateful for the moments we share together.
-        </p>
+        <div class="large-letter">💌</div>
         
-        <p>
-          You make me want to be better, to love deeper, and to cherish every second. The way you see the world with such kindness and warmth inspires me more than you could ever know.
-        </p>
+        <p class="subtitle">Click to open</p>
         
-        <div class="divider"></div>
+        <button class="click-link" id="openLetterBtn">Open Letter</button>
         
-        <p>
-          <span class="highlight">You are my person.</span>
-        </p>
+        <div class="hint">✨ Click to reveal my feelings ✨</div>
+      </div>
+
+      <!-- SECOND STATE: Romantic Messages (Hidden Initially) -->
+      <div id="romanticState" style="display: none;">
+        <div class="label">A Message For You</div>
         
-        <p>
-          In the quiet moments and the exciting adventures, with you is where I want to be. Thank you for being you, for loving me, and for making my life infinitely better.
-        </p>
+        <h1>I Love You ❤️</h1>
         
-        <p class="soft">
-          You are my love, my dream, my everything.
-        </p>
+        <div class="heart"></div>
         
-        <div class="divider"></div>
+        <p class="subtitle">More than words can say</p>
         
-        <div class="signature">
-          Forever yours ✨
+        <div class="letter">
+          <p>
+            <span class="highlight">Aren</span>, I wanted to take a moment to tell you something that's been on my heart.
+          </p>
+          
+          <p>
+            Every day with you means the world to me. Your smile lights up my entire world, and I find myself constantly grateful for the moments we share together.
+          </p>
+          
+          <p>
+            You make me want to be better, to love deeper, and to cherish every second. The way you see the world with such kindness and warmth inspires me more than you could ever know.
+          </p>
+          
+          <div class="divider"></div>
+          
+          <p>
+            <span class="highlight">You are my person.</span>
+          </p>
+          
+          <p>
+            In the quiet moments and the exciting adventures, with you is where I want to be. Thank you for being you, for loving me, and for making my life infinitely better.
+          </p>
+          
+          <p class="soft">
+            You are my love, my dream, my everything.
+          </p>
+          
+          <div class="divider"></div>
+          
+          <div class="signature">
+            Forever yours ✨
+          </div>
+          
+          <div class="final">
+            💕 Always & Forever 💕
+          </div>
+          
+          <p style="margin-top: 30px;">
+            <a href="secret.html" class="hidden-link">💌 Open Your Secret Letter 💌</a>
+          </p>
         </div>
-        
-        <div class="final">
-          💕 Always & Forever 💕
-        </div>
-        
-        <div class="hint">✨ Click the letter to reveal more ✨</div>
       </div>
     </div>
   </div>
@@ -645,47 +699,26 @@ function createPetal() {
   }, 7000);
 }
 
-// Handle card click to reveal hidden link
-document.getElementById('mainCard').addEventListener('click', function() {
-  // Add animation class
-  this.classList.add('hidden');
+// Handle letter opening
+document.getElementById('openLetterBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
   
-  // After animation, show the hidden link
+  const mainCard = document.getElementById('mainCard');
+  const letterState = document.getElementById('letterState');
+  const romanticState = document.getElementById('romanticState');
+  
+  // Add animation class
+  mainCard.classList.add('hidden');
+  
+  // After animation, show the romantic messages
   setTimeout(() => {
-    document.querySelector('.card-content').innerHTML = `
-      <div class="label">You Found It! 💕</div>
-      
-      <h1>Open Me ✨</h1>
-      
-      <div class="heart"></div>
-      
-      <p class="subtitle">Click below to continue our story</p>
-      
-      <div class="letter">
-        <p class="soft">
-          I've hidden a little surprise just for you...
-        </p>
-        
-        <div class="divider"></div>
-        
-        <p>
-          <a href="secret.html" class="hidden-link">💌 Open Your Secret Letter 💌</a>
-        </p>
-        
-        <div class="divider"></div>
-        
-        <p class="soft">
-          I love you so much...
-        </p>
-      </div>
-    `;
+    letterState.style.display = 'none';
+    romanticState.style.display = 'block';
     
     // Remove hidden class to show new content
-    document.getElementById('mainCard').classList.remove('hidden');
+    mainCard.classList.remove('hidden');
   }, 500);
-  
-  // Prevent event bubbling
-  event.stopPropagation();
 });
 
 // Initialize
