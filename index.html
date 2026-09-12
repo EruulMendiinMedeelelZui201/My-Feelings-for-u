@@ -36,6 +36,7 @@ body {
   z-index: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .star {
@@ -75,6 +76,7 @@ body {
     0 0 70px rgba(255, 190, 220, 0.5);
   opacity: 0.9;
   z-index: 1;
+  pointer-events: none;
 }
 
 .moon::after {
@@ -88,17 +90,35 @@ body {
   background: #11091c;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .moon {
-    width: 50px;
-    height: 50px;
-    top: 5%;
-    right: 3%;
+    width: 60px;
+    height: 60px;
+    top: 3%;
+    right: 10px;
   }
 
   .moon::after {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    top: -6px;
+    left: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .moon {
+    width: 45px;
+    height: 45px;
+    top: 2%;
+    right: 8px;
+  }
+
+  .moon::after {
+    width: 45px;
+    height: 45px;
+    top: -5px;
+    left: -8px;
   }
 }
 
@@ -114,6 +134,7 @@ body {
   animation: fall linear infinite;
   opacity: 0;
   font-size: 30px;
+  will-change: transform, opacity;
 }
 
 @keyframes fall {
@@ -145,6 +166,41 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .petal {
+    font-size: 24px;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform:
+        translateY(-50px)
+        translateX(0)
+        rotate(0deg);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.9;
+    }
+
+    50% {
+      transform:
+        translateY(50vh)
+        translateX(50px)
+        rotate(180deg);
+    }
+
+    100% {
+      transform:
+        translateY(110vh)
+        translateX(-60px)
+        rotate(360deg);
+      opacity: 0;
+    }
+  }
+}
+
 /* =========================
    MAIN CARD
 ========================= */
@@ -164,6 +220,7 @@ body {
   width: min(700px, 94vw);
   max-height: 90vh;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 45px 35px;
   text-align: center;
   border-radius: 30px;
@@ -177,11 +234,20 @@ body {
   animation: entrance 2s ease forwards;
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 35px 25px;
+    border-radius: 25px;
+    max-height: 92vh;
+  }
+}
+
 @media (max-width: 480px) {
   .card {
-    padding: 30px 20px;
-    border-radius: 20px;
+    padding: 25px 18px;
+    border-radius: 18px;
     max-height: 95vh;
+    width: min(95vw, 100%);
   }
 }
 
@@ -207,14 +273,14 @@ body {
 
 .label {
   color: #ffb3d1;
-  letter-spacing: 5px;
-  font-size: 12px;
+  letter-spacing: 2px;
+  font-size: clamp(10px, 2.5vw, 12px);
   text-transform: uppercase;
   margin-bottom: 15px;
 }
 
 h1 {
-  font-size: clamp(36px, 10vw, 82px);
+  font-size: clamp(32px, 8vw, 82px);
   margin-bottom: 10px;
   background:
     linear-gradient(
@@ -229,6 +295,7 @@ h1 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shine 6s linear infinite;
+  word-wrap: break-word;
 }
 
 @keyframes shine {
@@ -243,9 +310,16 @@ h1 {
 
 .subtitle {
   color: #dcbecf;
-  font-size: clamp(14px, 4vw, 17px);
+  font-size: clamp(13px, 3.5vw, 17px);
   font-style: italic;
   margin-bottom: 32px;
+  word-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .subtitle {
+    margin-bottom: 24px;
+  }
 }
 
 /* =========================
@@ -253,8 +327,8 @@ h1 {
 ========================= */
 
 .heart {
-  width: 60px;
-  height: 60px;
+  width: clamp(50px, 12vw, 60px);
+  height: clamp(50px, 12vw, 60px);
   position: relative;
   margin: 0 auto 35px;
   transform: rotate(-45deg);
@@ -273,19 +347,19 @@ h1 {
 .heart::after {
   content: "";
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background: inherit;
 }
 
 .heart::before {
-  top: -30px;
+  top: -50%;
   left: 0;
 }
 
 .heart::after {
-  left: 30px;
+  left: 50%;
   top: 0;
 }
 
@@ -315,6 +389,12 @@ h1 {
   }
 }
 
+@media (max-width: 480px) {
+  .heart {
+    margin-bottom: 25px;
+  }
+}
+
 /* =========================
    LETTER
 ========================= */
@@ -323,16 +403,19 @@ h1 {
   max-width: 590px;
   margin: auto;
   color: #f7eaf1;
-  font-size: clamp(15px, 4vw, 17px);
-  line-height: 1.9;
+  font-size: clamp(14px, 3.5vw, 17px);
+  line-height: 1.8;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .letter p {
-  margin-bottom: 22px;
+  margin-bottom: clamp(16px, 4vw, 22px);
 }
 
 .highlight {
   color: #ff9fc5;
+  font-weight: 500;
 }
 
 .soft {
@@ -341,9 +424,9 @@ h1 {
 }
 
 .divider {
-  width: 100px;
+  width: 80px;
   height: 1px;
-  margin: 30px auto;
+  margin: clamp(20px, 5vw, 30px) auto;
   background:
     linear-gradient(
       90deg,
@@ -353,9 +436,15 @@ h1 {
     );
 }
 
+@media (max-width: 480px) {
+  .divider {
+    width: 60px;
+  }
+}
+
 .signature {
   margin-top: 30px;
-  font-size: clamp(18px, 5vw, 22px);
+  font-size: clamp(16px, 4.5vw, 22px);
   color: #ff9fc7;
   font-style: italic;
 }
@@ -363,12 +452,12 @@ h1 {
 .final {
   color: #ffb3d1;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
 }
 
 /* Scrollbar styling */
 .card::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .card::-webkit-scrollbar-track {
@@ -383,6 +472,15 @@ h1 {
 
 .card::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 107, 165, 0.8);
+}
+
+/* Performance optimization */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 </style>
@@ -446,13 +544,14 @@ h1 {
 // Create stars
 function createStars() {
   const starsContainer = document.getElementById('stars');
-  const starCount = window.innerWidth > 768 ? 100 : 50;
+  const starCount = window.innerWidth > 768 ? 100 : window.innerWidth > 480 ? 60 : 40;
   
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement('div');
     star.className = 'star';
-    star.style.width = Math.random() * 3 + 'px';
-    star.style.height = star.style.width;
+    const size = Math.random() * 2.5 + 0.5;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
     star.style.left = Math.random() * 100 + '%';
     star.style.top = Math.random() * 100 + '%';
     star.style.animationDelay = Math.random() * 2 + 's';
@@ -477,16 +576,17 @@ function createPetal() {
 }
 
 // Initialize
-createStars();
+document.addEventListener('DOMContentLoaded', () => {
+  createStars();
+});
 
-// Create petals every 2 seconds
-setInterval(createPetal, 2000);
+// Create petals every 2 seconds (reduce frequency on mobile)
+const petalInterval = window.innerWidth > 480 ? 2000 : 3000;
+setInterval(createPetal, petalInterval);
 
 // Responsive adjustments
 window.addEventListener('resize', () => {
-  if (window.innerWidth < 480) {
-    // Mobile optimizations already in CSS
-  }
+  // Handle responsive changes
 });
 </script>
 
