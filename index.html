@@ -672,17 +672,43 @@ function setSync(message,ok=false){
 
 function renderSaved(){
   list.innerHTML="";
-  $("none").hidden=saved.length>0;
-  saved.forEach(item=>{
+
+  // Show both permanently shared jar notes and pulled/saved notes.
+  // Jar notes are read-only here because the Firebase rules keep them permanent.
+  const jarItems=extra.map(item=>({
+    id:item.id,
+    text:item.text,
+    n:Number(item.n)||0,
+    source:"jar"
+  }));
+  const savedItems=saved.map(item=>({
+    id:item.id,
+    text:item.text,
+    n:Number(item.n)||0,
+    source:"saved"
+  }));
+
+  const visible=[...jarItems,...savedItems]
+    .sort((a,b)=>b.n-a.n);
+
+  $("none").hidden=visible.length>0;
+
+  visible.forEach(item=>{
     const li=document.createElement("li");
     const span=document.createElement("span");
-    const x=document.createElement("button");
     span.textContent=item.text;
-    x.className="x";
-    x.textContent="×";
-    x.setAttribute("aria-label","Remove this note");
-    x.onclick=()=>removeSaved(item.id);
-    li.append(span,x);
+    li.appendChild(span);
+
+    // Only locally/pulled saved notes can be removed from the saved collection.
+    if(item.source==="saved"){
+      const x=document.createElement("button");
+      x.className="x";
+      x.textContent="×";
+      x.setAttribute("aria-label","Remove this note");
+      x.onclick=()=>removeSaved(item.id);
+      li.appendChild(x);
+    }
+
     list.appendChild(li);
   });
 }
@@ -758,6 +784,26 @@ $("save").addEventListener("click",async()=>{
     const data={text:text,n:Date.now()};
 
     await ref.set(data);
+
+    // Keep only the newest 3 shared jar messages.
+    // Older messages are permanently removed from Firebase.
+    const jarSnap=await db.ref("jar").orderByChild("n").once("value");
+    const jarItems=[];
+    jarSnap.forEach(child=>{
+      const v=child.val();
+      if(v && typeof v.text==="string"){
+        jarItems.push({key:child.key,n:Number(v.n)||0});
+      }
+    });
+    jarItems.sort((a,b)=>b.n-a.n);
+
+    if(jarItems.length>3){
+      const updates={};
+      jarItems.slice(3).forEach(item=>{
+        updates[item.key]=null;
+      });
+      await db.ref("jar").update(updates);
+    }
 
     // Only clear the input after Firebase confirms the write.
     input.value="";
@@ -835,9 +881,10 @@ try{
         }
       });
       arr.sort((a,b)=>b.n-a.n);
-      extra=arr;
+      extra=arr.slice(0,3);
       st("extra",extra);
-      console.log("Firebase jar loaded:",extra.length,"permanent shared notes");
+      renderSaved();
+      console.log("Firebase jar loaded:",extra.length,"latest shared notes");
     },
     error=>{
       console.error("Firebase jar listener error:",error);
