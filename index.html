@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Our Little Distance — For Aren ❤️</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
@@ -30,8 +31,13 @@
   --line:#b9a8d6;
   box-sizing:border-box;
 }
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   min-height:100vh;
@@ -47,54 +53,110 @@ body{
 }
 
 /* CINEMATIC BACKGROUND */
+
 #stars{
-  position:fixed;inset:0;width:100%;height:100%;
-  z-index:0;pointer-events:none;overflow:hidden;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
 }
+
 .star{
-  position:absolute;background:#fff;border-radius:50%;
+  position:absolute;
+  background:#fff;
+  border-radius:50%;
   box-shadow:0 0 8px #fff;
   animation:twinkle 2s infinite alternate;
 }
+
 @keyframes twinkle{
-  from{opacity:.15;transform:scale(.7)}
-  to{opacity:1;transform:scale(1.3)}
+  from{
+    opacity:.15;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1.3);
+  }
 }
+
 .moon{
-  position:fixed;top:7%;right:7%;
-  width:76px;height:76px;border-radius:50%;
+  position:fixed;
+  top:7%;
+  right:7%;
+  width:76px;
+  height:76px;
+  border-radius:50%;
   background:#fff5f8;
   box-shadow:0 0 25px #fff,0 0 70px rgba(255,190,220,.5);
-  opacity:.9;z-index:1;pointer-events:none;
+  opacity:.9;
+  z-index:1;
+  pointer-events:none;
 }
+
 .moon:after{
-  content:"";position:absolute;top:-8px;left:-13px;
-  width:76px;height:76px;border-radius:50%;
+  content:"";
+  position:absolute;
+  top:-8px;
+  left:-13px;
+  width:76px;
+  height:76px;
+  border-radius:50%;
   background:#11091c;
 }
+
 .petal{
-  position:fixed;top:-50px;z-index:2;pointer-events:none;
-  animation:fall linear forwards;opacity:0;font-size:27px;
+  position:fixed;
+  top:-50px;
+  z-index:2;
+  pointer-events:none;
+  animation:fall linear forwards;
+  opacity:0;
+  font-size:27px;
   will-change:transform,opacity;
 }
+
 @keyframes fall{
-  0%{transform:translateY(-50px) translateX(0) rotate(0);opacity:0}
-  10%{opacity:.85}
-  50%{transform:translateY(50vh) translateX(90px) rotate(180deg)}
-  100%{transform:translateY(110vh) translateX(-100px) rotate(360deg);opacity:0}
+  0%{
+    transform:translateY(-50px) translateX(0) rotate(0);
+    opacity:0;
+  }
+
+  10%{
+    opacity:.85;
+  }
+
+  50%{
+    transform:translateY(50vh) translateX(90px) rotate(180deg);
+  }
+
+  100%{
+    transform:translateY(110vh) translateX(-100px) rotate(360deg);
+    opacity:0;
+  }
 }
 
 /* OPENING LETTER */
+
 #opening{
-  position:relative;z-index:10;
+  position:relative;
+  z-index:10;
   min-height:100vh;
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   padding:24px;
   transition:opacity .8s ease,visibility .8s ease;
 }
+
 #opening.is-hidden{
-  opacity:0;visibility:hidden;pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
+
 .letter-card{
   width:min(700px,94vw);
   max-height:92vh;
@@ -111,10 +173,19 @@ body{
     inset 0 0 40px rgba(255,255,255,.025);
   animation:entrance 1.5s ease forwards;
 }
+
 @keyframes entrance{
-  from{opacity:0;transform:translateY(35px) scale(.96)}
-  to{opacity:1;transform:translateY(0) scale(1)}
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.96);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
+
 .open-label{
   color:var(--pink3);
   letter-spacing:3px;
@@ -122,6 +193,7 @@ body{
   text-transform:uppercase;
   margin-bottom:12px;
 }
+
 .open-title{
   font-size:clamp(34px,8vw,68px);
   line-height:1.05;
@@ -132,13 +204,24 @@ body{
   -webkit-text-fill-color:transparent;
   animation:shine 6s linear infinite;
 }
-@keyframes shine{from{background-position:0%}to{background-position:300%}}
+
+@keyframes shine{
+  from{
+    background-position:0%;
+  }
+
+  to{
+    background-position:300%;
+  }
+}
+
 .open-sub{
   color:var(--muted);
   font-family:Caveat,cursive;
   font-size:clamp(1.45rem,5vw,2rem);
   margin:0 0 24px;
 }
+
 .envelope{
   font-size:clamp(82px,20vw,145px);
   line-height:1;
@@ -146,10 +229,17 @@ body{
   animation:float 3s ease-in-out infinite;
   filter:drop-shadow(0 0 25px rgba(255,70,145,.45));
 }
+
 @keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-14px);
+  }
 }
+
 .open-button{
   display:inline-block;
   border:1px solid rgba(255,179,209,.7);
@@ -162,12 +252,25 @@ body{
   box-shadow:0 0 28px rgba(255,60,150,.45);
   transition:transform .25s ease,box-shadow .25s ease;
 }
-.open-button:hover{transform:scale(1.06);box-shadow:0 0 42px rgba(255,60,150,.7)}
-.open-hint{color:#ffb3d1;font-size:.85rem;margin-top:22px;opacity:.75;font-style:italic}
+
+.open-button:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 42px rgba(255,60,150,.7);
+}
+
+.open-hint{
+  color:#ffb3d1;
+  font-size:.85rem;
+  margin-top:22px;
+  opacity:.75;
+  font-style:italic;
+}
 
 /* MAIN APP */
+
 #app{
-  position:relative;z-index:5;
+  position:relative;
+  z-index:5;
   width:min(900px,100%);
   margin:0 auto;
   padding:44px 18px 70px;
@@ -176,210 +279,535 @@ body{
   pointer-events:none;
   transition:opacity .9s ease,transform .9s ease;
 }
+
 #app.is-visible{
-  opacity:1;transform:none;pointer-events:auto;
-}
-.app-top{text-align:center;margin-bottom:25px}
-.names{
-  display:flex;justify-content:center;align-items:center;
-  gap:10px;flex-wrap:wrap;
-  font-size:1.3rem;margin-bottom:10px;
-}
-.names input{
-  width:8ch;text-align:center;font-weight:600;font-size:1.3rem;
-  color:var(--white);background:transparent;
-  border:0;border-bottom:2px dashed rgba(255,181,213,.6);
-  padding:2px;outline:none;
-}
-.names span{color:var(--pink3)}
-.app-title{
-  font-size:clamp(2.4rem,8vw,4.4rem);
-  line-height:1.02;margin:0 0 5px;font-weight:600;
-  background:linear-gradient(90deg,#fff,#ffb5d5,#ff659d,#fff);
-  background-size:300%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:shine 6s linear infinite;
-}
-.app-sub{
-  font-family:Caveat,cursive;
-  font-size:1.65rem;color:var(--muted);margin:0;
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
 }
 
-/* glass sections */
-.stage,.romance-section{
+.app-top{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.names{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  font-size:1.3rem;
+  margin-bottom:10px;
+}
+
+.names input{
+  width:8ch;
+  text-align:center;
+  font-weight:600;
+  font-size:1.3rem;
+  color:var(--white);
+  background:transparent;
+  border:0;
+  border-bottom:2px dashed rgba(255,181,213,.6);
+  padding:2px;
+  outline:none;
+}
+
+.names span{
+  color:var(--pink3);
+}
+
+.app-title{
+  font-size:clamp(2.4rem,8vw,4.4rem);
+  line-height:1.02;
+  margin:0 0 5px;
+  font-weight:600;
+  background:linear-gradient(90deg,#fff,#ffb5d5,#ff659d,#fff);
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shine 6s linear infinite;
+}
+
+.app-sub{
+  font-family:Caveat,cursive;
+  font-size:1.65rem;
+  color:var(--muted);
+  margin:0;
+}
+
+/* GLASS SECTIONS */
+
+.stage,
+.romance-section{
   position:relative;
   background:var(--glass);
   border:1px solid var(--border);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
-  box-shadow:0 20px 70px rgba(0,0,0,.2),inset 0 0 35px rgba(255,255,255,.018);
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.2),
+    inset 0 0 35px rgba(255,255,255,.018);
 }
+
 .stage{
   border-radius:36px;
   padding:25px 18px 18px;
   margin-bottom:20px;
 }
-.win{display:flex;justify-content:space-between;gap:16px}
-.who{width:44%;text-align:center}
-.orb{
-  width:94px;height:94px;border-radius:50%;
-  margin:0 auto 8px;display:grid;place-items:center;
-  font-size:2.45rem;transition:background .6s,box-shadow .6s;
-  box-shadow:0 0 30px rgba(255,255,255,.08);
-}
-.time{font-size:1.9rem;font-weight:600;letter-spacing:.02em;color:#fff}
-.zone-select{
-  font:inherit;color:var(--pink3);background:rgba(255,255,255,.05);
-  border:0;border-bottom:2px dashed var(--purple);
-  border-radius:0;padding:4px 2px;max-width:100%;outline:none;
-}
-.day{color:var(--muted);font-size:.95rem}
-.plane-wrap{position:relative;height:76px;margin:0}
-#plane{
-  position:absolute;left:0;top:0;
-  font-size:1.7rem;border:0;background:none;
-  cursor:pointer;padding:6px;transform:translate(-50%,-50%);
-  line-height:1;filter:drop-shadow(0 0 8px rgba(255,140,190,.6));
-}
-.route-svg{display:block;width:100%;height:76px;overflow:visible}
-.plane-hint{text-align:center;color:var(--muted);font-size:.9rem;margin:0}
-.plane-hint #hc{color:var(--pink3);font-weight:600}
-.floating-heart{
-  position:absolute;pointer-events:none;font-size:1.3rem;
-  animation:heartUp 1.6s ease-out forwards;
-}
-@keyframes heartUp{
-  to{transform:translateY(-90px) scale(1.4);opacity:0}
+
+.win{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
 }
 
-/* romantic message */
+.who{
+  width:44%;
+  text-align:center;
+}
+
+.orb{
+  width:94px;
+  height:94px;
+  border-radius:50%;
+  margin:0 auto 8px;
+  display:grid;
+  place-items:center;
+  font-size:2.45rem;
+  transition:background .6s,box-shadow .6s;
+  box-shadow:0 0 30px rgba(255,255,255,.08);
+}
+
+.time{
+  font-size:1.9rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#fff;
+}
+
+.zone-select{
+  font:inherit;
+  color:var(--pink3);
+  background:rgba(255,255,255,.05);
+  border:0;
+  border-bottom:2px dashed var(--purple);
+  border-radius:0;
+  padding:4px 2px;
+  max-width:100%;
+  outline:none;
+}
+
+.day{
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+.plane-wrap{
+  position:relative;
+  height:76px;
+  margin:0;
+}
+
+#plane{
+  position:absolute;
+  left:0;
+  top:0;
+  font-size:1.7rem;
+  border:0;
+  background:none;
+  cursor:pointer;
+  padding:6px;
+  transform:translate(-50%,-50%);
+  line-height:1;
+  filter:drop-shadow(0 0 8px rgba(255,140,190,.6));
+}
+
+.route-svg{
+  display:block;
+  width:100%;
+  height:76px;
+  overflow:visible;
+}
+
+.plane-hint{
+  text-align:center;
+  color:var(--muted);
+  font-size:.9rem;
+  margin:0;
+}
+
+.plane-hint #hc{
+  color:var(--pink3);
+  font-weight:600;
+}
+
+.floating-heart{
+  position:absolute;
+  pointer-events:none;
+  font-size:1.3rem;
+  animation:heartUp 1.6s ease-out forwards;
+}
+
+@keyframes heartUp{
+  to{
+    transform:translateY(-90px) scale(1.4);
+    opacity:0;
+  }
+}
+
+/* ROMANTIC MESSAGE */
+
 .romance-section{
-  border-radius:32px;padding:30px 26px;
-  margin-bottom:20px;text-align:center;
+  border-radius:32px;
+  padding:30px 26px;
+  margin-bottom:20px;
+  text-align:center;
   overflow:hidden;
 }
+
 .romance-kicker{
-  color:var(--pink3);letter-spacing:2px;
-  text-transform:uppercase;font-size:.78rem;
+  color:var(--pink3);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:.78rem;
 }
+
 .css-heart{
-  width:54px;height:54px;position:relative;
+  width:54px;
+  height:54px;
+  position:relative;
   margin:28px auto 30px;
   transform:rotate(-45deg);
   background:linear-gradient(135deg,#ff174f,#ff69a5);
   animation:heartbeat 1.5s infinite;
-  box-shadow:0 0 20px #ff3f7f,0 0 50px rgba(255,50,130,.4);
+  box-shadow:
+    0 0 20px #ff3f7f,
+    0 0 50px rgba(255,50,130,.4);
 }
-.css-heart:before,.css-heart:after{
-  content:"";position:absolute;width:100%;height:100%;
-  border-radius:50%;background:inherit;
+
+.css-heart:before,
+.css-heart:after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:inherit;
 }
-.css-heart:before{top:-50%;left:0}
-.css-heart:after{left:50%;top:0}
+
+.css-heart:before{
+  top:-50%;
+  left:0;
+}
+
+.css-heart:after{
+  left:50%;
+  top:0;
+}
+
 @keyframes heartbeat{
-  0%,100%{transform:rotate(-45deg) scale(1)}
-  15%{transform:rotate(-45deg) scale(1.12)}
-  30%{transform:rotate(-45deg) scale(1)}
-  45%{transform:rotate(-45deg) scale(1.08)}
+  0%,100%{
+    transform:rotate(-45deg) scale(1);
+  }
+
+  15%{
+    transform:rotate(-45deg) scale(1.12);
+  }
+
+  30%{
+    transform:rotate(-45deg) scale(1);
+  }
+
+  45%{
+    transform:rotate(-45deg) scale(1.08);
+  }
 }
+
 .romance-copy{
-  max-width:620px;margin:auto;color:var(--text);
-  font-family:Caveat,cursive;font-size:1.65rem;line-height:1.35;
+  max-width:620px;
+  margin:auto;
+  color:var(--text);
+  font-family:Caveat,cursive;
+  font-size:1.65rem;
+  line-height:1.35;
 }
-.romance-copy p{margin:0 0 16px}
-.romance-copy .highlight{color:#ff9fc5;font-weight:700}
+
+.romance-copy p{
+  margin:0 0 16px;
+}
+
+.romance-copy .highlight{
+  color:#ff9fc5;
+  font-weight:700;
+}
+
 .divider{
-  width:80px;height:1px;margin:20px auto;
+  width:80px;
+  height:1px;
+  margin:20px auto;
   background:linear-gradient(90deg,transparent,#ff72ad,transparent);
 }
-.signature{font-size:1.5rem;color:#ff9fc7;font-style:italic}
-.final{color:#ffb3d1;margin-top:10px}
+
+.signature{
+  font-size:1.5rem;
+  color:#ff9fc7;
+  font-style:italic;
+}
+
+.final{
+  color:#ffb3d1;
+  margin-top:10px;
+}
 
 /* NOTE JAR */
+
 .jar{
-  background:linear-gradient(135deg,rgba(255,105,160,.20),rgba(255,190,215,.08));
+  background:linear-gradient(
+    135deg,
+    rgba(255,105,160,.20),
+    rgba(255,190,215,.08)
+  );
   border:1px solid rgba(255,179,209,.18);
-  border-radius:32px;padding:24px 20px;text-align:center;
+  border-radius:32px;
+  padding:24px 20px;
+  text-align:center;
   margin-bottom:20px;
   backdrop-filter:blur(14px);
 }
-.jar h2{margin:0 0 4px;font-size:1.6rem;color:#fff}
-.jar-title{font-family:Caveat,cursive;color:var(--pink3);font-size:1.2rem}
-.note{
-  min-height:92px;background:rgba(255,255,255,.9);color:var(--ink);
-  border-radius:14px;padding:16px;margin:14px auto;
-  max-width:500px;font-family:Caveat,cursive;font-size:1.7rem;
-  line-height:1.2;display:grid;place-items:center;
-  transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.16);
+
+.jar h2{
+  margin:0 0 4px;
+  font-size:1.6rem;
+  color:#fff;
 }
+
+.jar-title{
+  font-family:Caveat,cursive;
+  color:var(--pink3);
+  font-size:1.2rem;
+}
+
+.note{
+  min-height:92px;
+  background:rgba(255,255,255,.9);
+  color:var(--ink);
+  border-radius:14px;
+  padding:16px;
+  margin:14px auto;
+  max-width:500px;
+  font-family:Caveat,cursive;
+  font-size:1.7rem;
+  line-height:1.2;
+  display:grid;
+  place-items:center;
+  transition:transform .35s;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+
 .btn{
-  font:500 1rem Fredoka,sans-serif;color:var(--ink);
-  background:#fff;border:0;border-radius:999px;
-  padding:10px 20px;cursor:pointer;
+  font:500 1rem Fredoka,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  border:0;
+  border-radius:999px;
+  padding:10px 20px;
+  cursor:pointer;
   transition:transform .2s,box-shadow .2s;
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
-.btn:active{transform:scale(.96)}
-.add{
-  display:flex;gap:8px;justify-content:center;align-items:center;
-  flex-wrap:wrap;margin-top:14px;font-size:.95rem;
-}
-.add input{
-  flex:1 1 180px;max-width:330px;
-  color:var(--ink);background:#fff;border:0;
-  border-radius:999px;padding:10px 15px;font:inherit;outline:none;
-}
-.saved{margin-top:18px;text-align:left}
-.saved h3{margin:0 0 7px;font-size:1.1rem;text-align:center;color:#fff}
-.saved ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.saved li{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.92);color:var(--ink);
-  border-radius:16px;padding:10px 14px;
-  font-family:Caveat,cursive;font-size:1.35rem;line-height:1.15;
-}
-.saved li span{flex:1}
-.saved .x{
-  font:1rem Fredoka,sans-serif;border:0;
-  background:#eadff0;color:var(--ink);
-  width:28px;height:28px;border-radius:50%;cursor:pointer;
-}
-.saved p{text-align:center;color:var(--muted);margin:5px 0 0;font-size:.9rem}
 
-/* footer */
-.foot{
-  text-align:center;color:var(--muted);
-  font-family:Caveat,cursive;font-size:1.45rem;
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
 }
+
+.btn:active{
+  transform:scale(.96);
+}
+
+.add{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:14px;
+  font-size:.95rem;
+}
+
+.add input{
+  flex:1 1 180px;
+  max-width:330px;
+  color:var(--ink);
+  background:#fff;
+  border:0;
+  border-radius:999px;
+  padding:10px 15px;
+  font:inherit;
+  outline:none;
+}
+
+.saved{
+  margin-top:18px;
+  text-align:left;
+}
+
+.saved h3{
+  margin:0 0 7px;
+  font-size:1.1rem;
+  text-align:center;
+  color:#fff;
+}
+
+.saved ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+
+.saved li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.92);
+  color:var(--ink);
+  border-radius:16px;
+  padding:10px 14px;
+  font-family:Caveat,cursive;
+  font-size:1.35rem;
+  line-height:1.15;
+}
+
+.saved li span{
+  flex:1;
+}
+
+.saved .x{
+  font:1rem Fredoka,sans-serif;
+  border:0;
+  background:#eadff0;
+  color:var(--ink);
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.saved p{
+  text-align:center;
+  color:var(--muted);
+  margin:5px 0 0;
+  font-size:.9rem;
+}
+
+#sync{
+  min-height:20px;
+  color:#ffb5d5;
+}
+
+/* FOOTER */
+
+.foot{
+  text-align:center;
+  color:var(--muted);
+  font-family:Caveat,cursive;
+  font-size:1.45rem;
+}
+
 .app-link{
-  display:inline-block;margin-top:14px;
-  color:#ffb3d1;text-decoration:none;font-size:.9rem;
+  display:inline-block;
+  margin-top:14px;
+  color:#ffb3d1;
+  text-decoration:none;
+  font-size:.9rem;
   opacity:.75;
 }
-.app-link:hover{opacity:1}
 
-/* accessibility */
-button:focus-visible,input:focus-visible,select:focus-visible{
-  outline:3px solid #ff9fc5;outline-offset:3px;
+.app-link:hover{
+  opacity:1;
 }
+
+/* ACCESSIBILITY */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+  outline:3px solid #ff9fc5;
+  outline-offset:3px;
+}
+
 @media (max-width:700px){
-  .moon{width:58px;height:58px;top:3%;right:12px}
-  .moon:after{width:58px;height:58px;top:-6px;left:-10px}
-  #app{padding-top:34px}
-  .letter-card{padding:36px 23px}
+
+  .moon{
+    width:58px;
+    height:58px;
+    top:3%;
+    right:12px;
+  }
+
+  .moon:after{
+    width:58px;
+    height:58px;
+    top:-6px;
+    left:-10px;
+  }
+
+  #app{
+    padding-top:34px;
+  }
+
+  .letter-card{
+    padding:36px 23px;
+  }
 }
+
 @media (max-width:480px){
-  .petal{font-size:23px}
-  .win{gap:8px}
-  .who{width:48%}
-  .orb{width:76px;height:76px;font-size:2rem}
-  .time{font-size:1.55rem}
-  .stage,.romance-section,.jar{border-radius:25px}
-  .stage{padding:20px 12px 15px}
-  .romance-section{padding:26px 18px}
+
+  .petal{
+    font-size:23px;
+  }
+
+  .win{
+    gap:8px;
+  }
+
+  .who{
+    width:48%;
+  }
+
+  .orb{
+    width:76px;
+    height:76px;
+    font-size:2rem;
+  }
+
+  .time{
+    font-size:1.55rem;
+  }
+
+  .stage,
+  .romance-section,
+  .jar{
+    border-radius:25px;
+  }
+
+  .stage{
+    padding:20px 12px 15px;
+  }
+
+  .romance-section{
+    padding:26px 18px;
+  }
 }
+
 @media (prefers-reduced-motion:reduce){
-  *,*:before,*:after{
+
+  *,
+  *:before,
+  *:after{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
@@ -389,146 +817,368 @@ button:focus-visible,input:focus-visible,select:focus-visible{
 </head>
 
 <body>
+
 <div id="stars" aria-hidden="true"></div>
 <div class="moon" aria-hidden="true"></div>
 
 <!-- OPENING LETTER -->
+
 <section id="opening" aria-label="Opening letter">
+
   <div class="letter-card">
-    <div class="open-label">A little letter for you</div>
-    <h1 class="open-title">For Aren ❤️</h1>
-    <p class="open-sub">Some things are worth crossing every distance for.</p>
-    <div class="envelope" aria-hidden="true">💌</div>
-    <button class="open-button" id="openLetterBtn">Open the letter</button>
-    <div class="open-hint">✨ there is something waiting on the other side ✨</div>
-  </div>
-</section>
 
-<!-- MAIN DISTANCE EXPERIENCE -->
-<main id="app">
-  <header class="app-top">
-    <h2 class="app-title">Same sky, different clocks</h2>
-    <p class="app-sub"></p>
-  </header>
-
-  <!-- TIME ZONES -->
-  <section class="stage" aria-label="Our two time zones">
-    <div class="win">
-      <div class="who">
-        <div class="orb" id="o1"></div>
-        <div class="time" id="t1">--:--</div>
-        <select class="zone-select" id="z1" aria-label="First time zone"></select>
-        <div class="day" id="d1"></div>
-      </div>
-
-      <div class="who">
-        <div class="orb" id="o2"></div>
-        <div class="time" id="t2">--:--</div>
-        <select class="zone-select" id="z2" aria-label="Second time zone"></select>
-        <div class="day" id="d2"></div>
-      </div>
+    <div class="open-label">
+      A little letter for you
     </div>
 
+    <h1 class="open-title">
+      For Aren ❤️
+    </h1>
+
+    <p class="open-sub">
+      Some things are worth crossing every distance for.
+    </p>
+
+    <div class="envelope" aria-hidden="true">
+      💌
+    </div>
+
+    <button class="open-button" id="openLetterBtn">
+      Open the letter
+    </button>
+
+    <div class="open-hint">
+      ✨ there is something waiting on the other side ✨
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN DISTANCE EXPERIENCE -->
+
+<main id="app">
+
+  <header class="app-top">
+
+    <h2 class="app-title">
+      Same sky, different clocks
+    </h2>
+
+    <p class="app-sub"></p>
+
+  </header>
+
+
+  <!-- TIME ZONES -->
+
+  <section class="stage" aria-label="Our two time zones">
+
+    <div class="win">
+
+      <div class="who">
+
+        <div class="orb" id="o1"></div>
+
+        <div class="time" id="t1">
+          --:--
+        </div>
+
+        <select
+          class="zone-select"
+          id="z1"
+          aria-label="First time zone">
+        </select>
+
+        <div class="day" id="d1"></div>
+
+      </div>
+
+
+      <div class="who">
+
+        <div class="orb" id="o2"></div>
+
+        <div class="time" id="t2">
+          --:--
+        </div>
+
+        <select
+          class="zone-select"
+          id="z2"
+          aria-label="Second time zone">
+        </select>
+
+        <div class="day" id="d2"></div>
+
+      </div>
+
+    </div>
+
+
     <div class="plane-wrap" id="pw">
-      <svg class="route-svg" viewBox="0 0 600 76" preserveAspectRatio="none" aria-hidden="true">
-        <path id="arc"
+
+      <svg
+        class="route-svg"
+        viewBox="0 0 600 76"
+        preserveAspectRatio="none"
+        aria-hidden="true">
+
+        <path
+          id="arc"
           d="M 40 67 Q 300 -28 560 67"
           fill="none"
           stroke="rgba(255,181,213,.62)"
           stroke-width="3"
           stroke-dasharray="2 10"
           stroke-linecap="round"
-          vector-effect="non-scaling-stroke"/>
+          vector-effect="non-scaling-stroke">
+        </path>
+
       </svg>
-      <button id="plane" aria-label="Send a heart">💌</button>
+
+      <button
+        id="plane"
+        aria-label="Send a heart">
+        💌
+      </button>
+
     </div>
-    <p class="plane-hint">tap the letter to send a heart · <span id="hc">0</span> sent today</p>
+
+
+    <p class="plane-hint">
+      tap the letter to send a heart ·
+      <span id="hc">0</span>
+      sent today
+    </p>
+
   </section>
+
 
   <!-- ROMANTIC MESSAGE -->
+
   <section class="romance-section">
-    <div class="romance-kicker">A message between the stars</div>
-    <div class="css-heart" aria-hidden="true"></div>
-    <div class="romance-copy">
-      <p>I wanted to leave a little piece of my heart here.</p>
-      <p>Even when two clocks disagree, some moments can still feel like they belong to the same day.</p>
-      <div class="divider"></div>
-      <p><span class="highlight">You are my favorite person.</span></p>
-      <div class="divider"></div>
+
+    <div class="romance-kicker">
+      A message between the stars
     </div>
+
+    <div class="css-heart" aria-hidden="true"></div>
+
+    <div class="romance-copy">
+
+      <p>
+        I wanted to leave a little piece of my heart here.
+      </p>
+
+      <p>
+        Even when two clocks disagree, some moments can still feel like they belong to the same day.
+      </p>
+
+      <div class="divider"></div>
+
+      <p>
+        <span class="highlight">
+          You are my favorite person.
+        </span>
+      </p>
+
+      <div class="divider"></div>
+
+    </div>
+
   </section>
+
 
   <!-- NOTE JAR -->
+
   <section class="jar">
-    <h2>The note jar</h2>
-    <div class="jar-title">little words for the days when you miss me</div>
-    <div class="note" id="note">Pull a note when you miss me</div>
-    <button class="btn" id="pull">Pull a note</button>
+
+    <h2>
+      The note jar
+    </h2>
+
+    <div class="jar-title">
+      little words for the days when you miss me
+    </div>
+
+
+    <div class="note" id="note">
+      Pull a note when you miss me
+    </div>
+
+
+    <button class="btn" id="pull">
+      Pull a note
+    </button>
+
 
     <div class="add">
-      <input id="mine" placeholder="Write one for them" maxlength="90" aria-label="New note">
-      <button class="btn" id="save">Add to jar</button>
+
+      <input
+        id="mine"
+        placeholder="Write one for them"
+        maxlength="90"
+        aria-label="New note">
+
+      <button class="btn" id="save">
+        Add to jar
+      </button>
+
     </div>
+
 
     <div class="saved">
-      <h3>Saved notes</h3>
+
+      <h3>
+        Saved notes
+      </h3>
+
       <ul id="saved"></ul>
-      <p id="none">Pull a note and it stays here until you remove it.</p>
+
+      <p id="none">
+        Pull a note and it stays here until you remove it.
+      </p>
+
       <p id="sync"></p>
+
     </div>
+
   </section>
 
-  <p class="foot">every day is one closer ♡</p>
+
+  <p class="foot">
+    every day is one closer ♡
+  </p>
+
+
   <div style="text-align:center">
-    <a class="app-link" href="secret.html">💌 Open Your Secret Letter 💌</a>
+
+    <a
+      class="app-link"
+      href="secret.html">
+      💌 Open Your Secret Letter 💌
+    </a>
+
   </div>
+
 </main>
 
-<!-- Firebase SDK (compat) -->
+
+<!-- FIREBASE SDK -->
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
+
 <script>
-/* BACKGROUND */
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
 function createStars(){
+
   const container=document.getElementById("stars");
-  const count=window.innerWidth>768?110:window.innerWidth>480?65:42;
+
+  const count=
+    window.innerWidth>768
+      ?110
+      :window.innerWidth>480
+        ?65
+        :42;
+
   for(let i=0;i<count;i++){
+
     const star=document.createElement("div");
+
     star.className="star";
+
     const size=Math.random()*2.5+.5;
+
     star.style.width=size+"px";
     star.style.height=size+"px";
+
     star.style.left=Math.random()*100+"%";
     star.style.top=Math.random()*100+"%";
+
     star.style.animationDelay=Math.random()*2+"s";
+
     container.appendChild(star);
   }
 }
+
+
 function createPetal(){
+
   const petal=document.createElement("div");
+
   petal.className="petal";
   petal.textContent="🌹";
+
   petal.style.left=Math.random()*100+"vw";
-  petal.style.animationDuration=(Math.random()*3+5)+"s";
+
+  petal.style.animationDuration=
+    (Math.random()*3+5)+"s";
+
   document.body.appendChild(petal);
-  setTimeout(()=>petal.remove(),8500);
+
+  setTimeout(
+    ()=>petal.remove(),
+    8500
+  );
 }
+
+
 createStars();
-setInterval(createPetal,2200);
 
-/* OPEN LETTER */
-const opening=document.getElementById("opening");
-const app=document.getElementById("app");
-document.getElementById("openLetterBtn").addEventListener("click",()=>{
-  opening.classList.add("is-hidden");
-  setTimeout(()=>app.classList.add("is-visible"),350);
-  setTimeout(()=>opening.remove(),1000);
-});
+setInterval(
+  createPetal,
+  2200
+);
 
-/* TIME ZONES */
-const $=id=>document.getElementById(id);
+
+/* =========================================================
+   OPEN LETTER
+========================================================= */
+
+const opening=
+  document.getElementById("opening");
+
+const app=
+  document.getElementById("app");
+
+
+document
+  .getElementById("openLetterBtn")
+  .addEventListener("click",()=>{
+
+    opening.classList.add("is-hidden");
+
+    setTimeout(
+      ()=>app.classList.add("is-visible"),
+      350
+    );
+
+    setTimeout(
+      ()=>opening.remove(),
+      1000
+    );
+
+  });
+
+
+/* =========================================================
+   TIME ZONES
+========================================================= */
+
+const $=
+  id=>document.getElementById(id);
+
+
 const zones=[
+
   ["Ulaanbaatar","Asia/Ulaanbaatar"],
   ["Istanbul","Europe/Istanbul"],
   ["Seoul","Asia/Seoul"],
@@ -539,255 +1189,1141 @@ const zones=[
   ["Los Angeles","America/Los_Angeles"],
   ["Sydney","Australia/Sydney"],
   ["Dubai","Asia/Dubai"]
+
 ];
+
 
 let notes=[
+
   "You're my favorite notification",
+
   "I saved a seat for you in every daydream",
+
   "Your laugh works across any time zone",
+
   "Counting sleeps is my favorite math",
+
   "I'd pick you again, on every continent",
+
   "You make far feel small"
+
 ];
 
+
 const st=(k,v)=>{
-  try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}
-};
-const ld=(k,d)=>{
+
   try{
-    const v=localStorage.getItem(k);
-    return v?JSON.parse(v):d;
-  }catch(e){return d}
+
+    localStorage.setItem(
+      k,
+      JSON.stringify(v)
+    );
+
+  }catch(e){
+
+    console.warn(
+      "localStorage unavailable",
+      e
+    );
+
+  }
+
 };
 
-zones.forEach(([name,zone])=>{
-  ["z1","z2"].forEach(id=>{
-    const option=document.createElement("option");
-    option.value=zone;
-    option.textContent=name;
-    $(id).appendChild(option);
-  });
-});
 
-$("z1").value=ld("z1","Asia/Ulaanbaatar");
-$("z2").value=ld("z2","Europe/Istanbul");
-notes=ld("notes",notes);
+const ld=(k,d)=>{
 
-["z1","z2"].forEach(id=>{
-  $(id).addEventListener("change",e=>{
-    st(id,e.target.value);
-    tick();
-  });
-});
+  try{
+
+    const v=
+      localStorage.getItem(k);
+
+    return v
+      ?JSON.parse(v)
+      :d;
+
+  }catch(e){
+
+    return d;
+
+  }
+
+};
+
+
+zones.forEach(
+  ([name,zone])=>{
+
+    ["z1","z2"].forEach(
+      id=>{
+
+        const option=
+          document.createElement("option");
+
+        option.value=zone;
+
+        option.textContent=name;
+
+        $(id).appendChild(option);
+
+      }
+    );
+
+  }
+);
+
+
+$("z1").value=
+  ld(
+    "z1",
+    "Asia/Ulaanbaatar"
+  );
+
+
+$("z2").value=
+  ld(
+    "z2",
+    "Europe/Istanbul"
+  );
+
+
+notes=
+  ld(
+    "notes",
+    notes
+  );
+
+
+["z1","z2"].forEach(
+  id=>{
+
+    $(id).addEventListener(
+      "change",
+      e=>{
+
+        st(
+          id,
+          e.target.value
+        );
+
+        tick();
+
+      }
+    );
+
+  }
+);
+
 
 function part(zone){
-  const now=new Date();
-  const time=new Intl.DateTimeFormat([],{
-    timeZone:zone,hour:"numeric",minute:"2-digit"
-  }).format(now);
-  const hour=+new Intl.DateTimeFormat("en-GB",{
-    timeZone:zone,hour:"2-digit",hour12:false
-  }).format(now)%24;
-  const weekday=new Intl.DateTimeFormat([],{
-    timeZone:zone,weekday:"long"
-  }).format(now);
-  return {time,hour,weekday};
+
+  const now=
+    new Date();
+
+  const time=
+    new Intl.DateTimeFormat(
+      [],
+      {
+        timeZone:zone,
+        hour:"numeric",
+        minute:"2-digit"
+      }
+    ).format(now);
+
+
+  const hour=
+    +new Intl.DateTimeFormat(
+      "en-GB",
+      {
+        timeZone:zone,
+        hour:"2-digit",
+        hour12:false
+      }
+    ).format(now)%24;
+
+
+  const weekday=
+    new Intl.DateTimeFormat(
+      [],
+      {
+        timeZone:zone,
+        weekday:"long"
+      }
+    ).format(now);
+
+
+  return {
+    time,
+    hour,
+    weekday
+  };
+
 }
+
 
 function orb(el,hour){
-  const day=hour>=6&&hour<19;
-  el.textContent=day?"☀️":"🌙";
-  el.style.background=day?"rgba(255,240,179,.85)":"rgba(185,168,214,.55)";
-  el.style.boxShadow=day
-    ?"0 0 28px rgba(255,230,120,.28)"
-    :"0 0 28px rgba(180,160,255,.24)";
+
+  const day=
+    hour>=6 &&
+    hour<19;
+
+
+  el.textContent=
+    day
+      ?"☀️"
+      :"🌙";
+
+
+  el.style.background=
+    day
+      ?"rgba(255,240,179,.85)"
+      :"rgba(185,168,214,.55)";
+
+
+  el.style.boxShadow=
+    day
+      ?"0 0 28px rgba(255,230,120,.28)"
+      :"0 0 28px rgba(180,160,255,.24)";
+
 }
+
 
 function tick(){
-  [["1","z1"],["2","z2"]].forEach(([i,z])=>{
-    const p=part($(z).value);
-    $("t"+i).textContent=p.time;
-    $("d"+i).textContent=p.weekday+(p.hour<6||p.hour>=22?" · sleepy time":"");
-    orb($("o"+i),p.hour);
-  });
-}
-tick();
-setInterval(tick,15000);
 
-/* MOVING LETTER + HEARTS */
-const arc=$("arc");
-const plane=$("plane");
-const pw=$("pw");
-const reduced=matchMedia("(prefers-reduced-motion:reduce)").matches;
-let p0=performance.now();
+  [
+    ["1","z1"],
+    ["2","z2"]
+  ].forEach(
+    ([i,z])=>{
+
+      const p=
+        part(
+          $(z).value
+        );
+
+
+      $("t"+i).textContent=
+        p.time;
+
+
+      $("d"+i).textContent=
+        p.weekday+
+        (
+          p.hour<6 ||
+          p.hour>=22
+            ?" · sleepy time"
+            :""
+        );
+
+
+      orb(
+        $("o"+i),
+        p.hour
+      );
+
+    }
+  );
+
+}
+
+
+tick();
+
+setInterval(
+  tick,
+  15000
+);
+
+
+/* =========================================================
+   MOVING LETTER + HEARTS
+========================================================= */
+
+const arc=
+  $("arc");
+
+const plane=
+  $("plane");
+
+const pw=
+  $("pw");
+
+const reduced=
+  matchMedia(
+    "(prefers-reduced-motion:reduce)"
+  ).matches;
+
+let p0=
+  performance.now();
+
 
 function placePlane(f){
-  const length=arc.getTotalLength();
-  const point=arc.getPointAtLength(length*f);
-  const width=pw.clientWidth;
-  const height=pw.clientHeight;
-  plane.style.left=(point.x/600*width)+"px";
-  plane.style.top=(point.y/76*height)+"px";
+
+  const length=
+    arc.getTotalLength();
+
+  const point=
+    arc.getPointAtLength(
+      length*f
+    );
+
+  const width=
+    pw.clientWidth;
+
+  const height=
+    pw.clientHeight;
+
+
+  plane.style.left=
+    (point.x/600*width)+"px";
+
+
+  plane.style.top=
+    (point.y/76*height)+"px";
+
 }
+
+
 function loop(t){
-  const f=(((t-p0)/9000)%2);
-  placePlane(f<1?f:2-f);
-  if(!reduced)requestAnimationFrame(loop);
+
+  const f=
+    (((t-p0)/9000)%2);
+
+
+  placePlane(
+    f<1
+      ?f
+      :2-f
+  );
+
+
+  if(!reduced){
+    requestAnimationFrame(loop);
+  }
+
 }
-if(reduced)placePlane(.5);
-else requestAnimationFrame(loop);
+
+
+if(reduced){
+
+  placePlane(.5);
+
+}else{
+
+  requestAnimationFrame(loop);
+
+}
+
 
 let hearts=0;
-plane.addEventListener("click",()=>{
-  hearts++;
-  $("hc").textContent=hearts;
-  const heart=document.createElement("span");
-  heart.className="floating-heart";
-  heart.textContent="💗";
-  heart.style.left=plane.style.left;
-  heart.style.top=plane.style.top;
-  pw.appendChild(heart);
-  setTimeout(()=>heart.remove(),1700);
-});
 
-/* NOTE JAR */
-const note=$("note");
-const list=$("saved");
+
+plane.addEventListener(
+  "click",
+  ()=>{
+
+    hearts++;
+
+    $("hc").textContent=
+      hearts;
+
+
+    const heart=
+      document.createElement("span");
+
+    heart.className=
+      "floating-heart";
+
+    heart.textContent=
+      "💗";
+
+
+    heart.style.left=
+      plane.style.left;
+
+    heart.style.top=
+      plane.style.top;
+
+
+    pw.appendChild(
+      heart
+    );
+
+
+    setTimeout(
+      ()=>heart.remove(),
+      1700
+    );
+
+  }
+);
+
+
+/* =========================================================
+   NOTE JAR
+========================================================= */
+
+const note=
+  $("note");
+
+const list=
+  $("saved");
+
+
 let db=null;
-let saved=ld("saved",[]);
-let extra=ld("extra",[]);
-const pool=()=>notes.concat(extra.map(e=>e.text));
+
+
+/*
+  This Promise is the important fix.
+
+  Clicking "Add to jar" now waits until Firebase has
+  finished initializing before attempting the write.
+*/
+let firebaseReady=null;
+
+let firebaseConnected=false;
+
+
+let saved=
+  ld(
+    "saved",
+    []
+  );
+
+
+let extra=
+  ld(
+    "extra",
+    []
+  );
+
+
+const pool=()=>{
+
+  return notes.concat(
+    extra.map(
+      e=>e.text
+    )
+  );
+
+};
+
+
+function setSync(message){
+
+  $("sync").textContent=
+    message || "";
+
+}
+
 
 function showNote(text){
-  note.textContent=text;
-  note.style.transform="rotate("+(Math.random()*4-2)+"deg)";
+
+  note.textContent=
+    text;
+
+  note.style.transform=
+    "rotate("+
+    (Math.random()*4-2)+
+    "deg)";
+
 }
+
 
 function renderSaved(){
+
   list.innerHTML="";
-  $("none").hidden=saved.length>0;
-  saved.forEach(item=>{
-    const li=document.createElement("li");
-    const span=document.createElement("span");
-    const x=document.createElement("button");
-    span.textContent=item.text;
-    x.className="x";
-    x.textContent="×";
-    x.setAttribute("aria-label","Remove this note");
-    x.onclick=()=>removeSaved(item.id);
-    li.append(span,x);
-    list.appendChild(li);
-  });
+
+  $("none").hidden=
+    saved.length>0;
+
+
+  saved.forEach(
+    item=>{
+
+      const li=
+        document.createElement("li");
+
+      const span=
+        document.createElement("span");
+
+      const x=
+        document.createElement("button");
+
+
+      span.textContent=
+        item.text;
+
+
+      x.className=
+        "x";
+
+      x.textContent=
+        "×";
+
+      x.setAttribute(
+        "aria-label",
+        "Remove this note"
+      );
+
+
+      x.onclick=
+        ()=>removeSaved(
+          item.id
+        );
+
+
+      li.append(
+        span,
+        x
+      );
+
+
+      list.appendChild(
+        li
+      );
+
+    }
+  );
+
 }
+
+
+/* =========================================================
+   REMOVE SAVED NOTE
+========================================================= */
 
 async function removeSaved(id){
-  saved=saved.filter(item=>item.id!==id);
+
+  saved=
+    saved.filter(
+      item=>
+        item.id!==id
+    );
+
+
   renderSaved();
+
+
   if(db){
-    try{await db.ref("saved/"+id).remove()}
-    catch(e){}
-  }else{
-    st("saved",saved);
+
+    try{
+
+      await db
+        .ref(
+          "saved/"+id
+        )
+        .remove();
+
+
+      setSync(
+        "✓ Saved notes are synced."
+      );
+
+
+      return;
+
+    }catch(e){
+
+      console.error(
+        "Firebase remove failed:",
+        e
+      );
+
+
+      setSync(
+        "Couldn't update Firebase. Check your Realtime Database rules."
+      );
+
+    }
+
   }
+
+
+  st(
+    "saved",
+    saved
+  );
+
 }
+
+
+/* =========================================================
+   SAVE NOTE TO SHARED SAVED NOTES
+========================================================= */
 
 async function saveNote(text){
-  const id="n"+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
-  if(db){
+
+  const id=
+    "n"+
+    Date.now().toString(36)+
+    Math.random()
+      .toString(36)
+      .slice(2,5);
+
+
+  const item={
+    id,
+    text,
+    n:Date.now()
+  };
+
+
+  /*
+    WAIT FOR FIREBASE.
+
+    This prevents the original race condition.
+  */
+
+  if(firebaseReady){
+
     try{
-      await db.ref("saved/"+id).set({text,n:Date.now()});
-      return;
+
+      await firebaseReady;
+
+
+      if(db){
+
+        await db
+          .ref(
+            "saved/"+id
+          )
+          .set({
+
+            text:item.text,
+
+            n:item.n
+
+          });
+
+
+        setSync(
+          "✓ Saved to the shared database."
+        );
+
+
+        return true;
+
+      }
+
     }catch(e){
-      db=null;
-      $("sync").textContent="Saving on this device only.";
+
+      console.error(
+        "Firebase save failed:",
+        e
+      );
+
+
+      setSync(
+        "⚠ Firebase save failed. Saved on this device instead."
+      );
+
     }
+
   }
-  saved.unshift({id,text,n:Date.now()});
-  st("saved",saved);
+
+
+  saved.unshift(
+    item
+  );
+
+
+  st(
+    "saved",
+    saved
+  );
+
+
   renderSaved();
+
+
+  return false;
+
 }
 
-$("pull").addEventListener("click",()=>{
-  const poolList=pool();
-  const text=poolList[Math.floor(Math.random()*poolList.length)];
-  note.style.transform="rotate("+(Math.random()*6-3)+"deg) scale(.96)";
-  setTimeout(()=>showNote(text),160);
-  saveNote(text);
-});
 
-$("save").addEventListener("click",async()=>{
-  const text=$("mine").value.trim();
-  if(!text)return;
-  $("mine").value="";
-  showNote(text);
-  if(db){
-    try{
-      await db.ref("jar/j"+Date.now().toString(36)).set({text,n:Date.now()});
+/* =========================================================
+   PULL NOTE
+========================================================= */
+
+$("pull").addEventListener(
+  "click",
+  async()=>{
+
+    const poolList=
+      pool();
+
+
+    if(!poolList.length){
       return;
-    }catch(e){}
-  }
-  extra.push({text});
-  st("extra",extra);
-});
+    }
 
-$("mine").addEventListener("keydown",e=>{
-  if(e.key==="Enter")$("save").click();
-});
+
+    const text=
+      poolList[
+        Math.floor(
+          Math.random()*
+          poolList.length
+        )
+      ];
+
+
+    note.style.transform=
+      "rotate("+
+      (Math.random()*6-3)+
+      "deg) scale(.96)";
+
+
+    setTimeout(
+      ()=>showNote(text),
+      160
+    );
+
+
+    /*
+      Pulling a note also adds it to saved notes.
+    */
+    await saveNote(
+      text
+    );
+
+  }
+);
+
+
+/* =========================================================
+   ADD TO JAR — FIXED
+========================================================= */
+
+$("save").addEventListener(
+  "click",
+  async()=>{
+
+    const input=
+      $("mine");
+
+
+    const text=
+      input.value.trim();
+
+
+    if(!text){
+      return;
+    }
+
+
+    /*
+      Clear input immediately.
+    */
+
+    input.value="";
+
+
+    showNote(
+      text
+    );
+
+
+    const id=
+      "j"+
+      Date.now().toString(36)+
+      Math.random()
+        .toString(36)
+        .slice(2,7);
+
+
+    const item={
+      id,
+      text,
+      n:Date.now()
+    };
+
+
+    try{
+
+      /*
+        WAIT FOR FIREBASE TO INITIALIZE
+        BEFORE CHECKING db.
+      */
+
+      if(firebaseReady){
+
+        await firebaseReady;
+
+      }
+
+
+      if(db){
+
+        /*
+          THIS is the actual shared database write.
+        */
+
+        await db
+          .ref(
+            "jar/"+id
+          )
+          .set({
+
+            text:item.text,
+
+            n:item.n
+
+          });
+
+
+        /*
+          The Firebase listener will update extra[]
+          automatically.
+        */
+
+        setSync(
+          "✓ Added to the shared jar."
+        );
+
+
+        return;
+
+      }
+
+    }catch(e){
+
+      console.error(
+        "Firebase jar save failed:",
+        e
+      );
+
+
+      setSync(
+        "⚠ Couldn't save to Firebase. Check your Realtime Database rules."
+      );
+
+    }
+
+
+    /*
+      LOCAL FALLBACK
+
+      If Firebase isn't available, the message still
+      remains on this device.
+    */
+
+    extra.push({
+      text:item.text,
+      n:item.n,
+      id:item.id
+    });
+
+
+    st(
+      "extra",
+      extra
+    );
+
+
+    setSync(
+      "Saved on this device only."
+    );
+
+  }
+);
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+$("mine").addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key==="Enter"){
+
+      e.preventDefault();
+
+      $("save").click();
+
+    }
+
+  }
+);
+
 
 renderSaved();
 
-/* FIREBASE (shared note jar) */
-const firebaseConfig = {
-  apiKey: "AIzaSyDjfp0_cy-EhUctSUAmhy7wfHq82P4cFK8",
-  authDomain: "database-885a6.firebaseapp.com",
-  projectId: "database-885a6",
-  storageBucket: "database-885a6.firebasestorage.app",
-  messagingSenderId: "789657325749",
-  appId: "1:789657325749:web:e9222f5367227f6caeaefc",
-  databaseURL: "https://database-885a6-default-rtdb.firebaseio.com"
+
+/* =========================================================
+   FIREBASE CONFIGURATION
+========================================================= */
+
+const firebaseConfig={
+
+  apiKey:
+    "AIzaSyDjfp0_cy-EhUctSUAmhy7wfHq82P4cFK8",
+
+  authDomain:
+    "database-885a6.firebaseapp.com",
+
+  projectId:
+    "database-885a6",
+
+  storageBucket:
+    "database-885a6.firebasestorage.app",
+
+  messagingSenderId:
+    "789657325749",
+
+  appId:
+    "1:789657325749:web:e9222f5367227f6caeaefc",
+
+  databaseURL:
+    "https://database-885a6-default-rtdb.firebaseio.com"
+
 };
 
-(async()=>{
-  try{
-    firebase.initializeApp(firebaseConfig);
-    db=firebase.database();
-  }catch(e){db=null}
 
-  if(!db){
-    $("sync").textContent="Saving on this device only.";
-    return;
+/* =========================================================
+   FIREBASE INITIALIZATION — FIXED
+========================================================= */
+
+firebaseReady=(async()=>{
+
+  try{
+
+    /*
+      Prevent duplicate initialization.
+    */
+
+    if(!firebase.apps.length){
+
+      firebase.initializeApp(
+        firebaseConfig
+      );
+
+    }
+
+
+    db=
+      firebase.database();
+
+
+    /*
+      Check Firebase connection.
+    */
+
+    await db
+      .ref(".info/connected")
+      .once("value");
+
+
+    firebaseConnected=true;
+
+
+    setSync(
+      "✓ Connected to shared database."
+    );
+
+
+    /* =====================================================
+       SHARED SAVED NOTES
+    ===================================================== */
+
+    db
+      .ref("saved")
+      .orderByChild("n")
+      .on(
+
+        "value",
+
+        snap=>{
+
+          const arr=[];
+
+
+          snap.forEach(
+            child=>{
+
+              const v=
+                child.val();
+
+
+              if(
+                v &&
+                typeof v.text==="string"
+              ){
+
+                arr.push({
+
+                  id:child.key,
+
+                  text:v.text,
+
+                  n:Number(v.n)||0
+
+                });
+
+              }
+
+            }
+          );
+
+
+          /*
+            Newest first.
+          */
+
+          arr.sort(
+            (a,b)=>
+              b.n-a.n
+          );
+
+
+          saved=
+            arr;
+
+
+          renderSaved();
+
+        },
+
+
+        error=>{
+
+          console.error(
+            "Saved listener error:",
+            error
+          );
+
+
+          setSync(
+            "⚠ Database read denied. Check Firebase rules."
+          );
+
+        }
+
+      );
+
+
+    /* =====================================================
+       SHARED NOTE JAR
+    ===================================================== */
+
+    db
+      .ref("jar")
+      .orderByChild("n")
+      .on(
+
+        "value",
+
+        snap=>{
+
+          const arr=[];
+
+
+          snap.forEach(
+            child=>{
+
+              const v=
+                child.val();
+
+
+              if(
+                v &&
+                typeof v.text==="string"
+              ){
+
+                arr.push({
+
+                  id:child.key,
+
+                  text:v.text,
+
+                  n:Number(v.n)||0
+
+                });
+
+              }
+
+            }
+          );
+
+
+          /*
+            Oldest first inside the pool.
+          */
+
+          arr.sort(
+            (a,b)=>
+              a.n-b.n
+          );
+
+
+          extra=
+            arr;
+
+
+          /*
+            Cache the synchronized jar locally.
+          */
+
+          st(
+            "extra",
+            extra
+          );
+
+
+          setSync(
+            "✓ Jar is synced with Firebase."
+          );
+
+        },
+
+
+        error=>{
+
+          console.error(
+            "Jar listener error:",
+            error
+          );
+
+
+          setSync(
+            "⚠ Jar read denied. Check Firebase Realtime Database rules."
+          );
+
+        }
+
+      );
+
+
+    return db;
+
+
+  }catch(e){
+
+    console.error(
+      "Firebase initialization failed:",
+      e
+    );
+
+
+    db=null;
+
+    firebaseConnected=false;
+
+
+    setSync(
+      "⚠ Firebase unavailable. Using this device's storage."
+    );
+
+
+    return null;
+
   }
 
-  db.ref("saved").orderByChild("n").on("value",
-    snap=>{
-      const arr=[];
-      snap.forEach(child=>{
-        const v=child.val();
-        if(v&&typeof v.text==="string")arr.push({id:child.key,text:v.text});
-      });
-      saved=arr.reverse(); /* newest first */
-      renderSaved();
-    },
-    ()=>{
-      db=null;
-      saved=ld("saved",[]);
-      renderSaved();
-      $("sync").textContent="Saving on this device only.";
-    }
-  );
-
-  db.ref("jar").orderByChild("n").on("value",
-    snap=>{
-      const arr=[];
-      snap.forEach(child=>{
-        const v=child.val();
-        if(v&&typeof v.text==="string")arr.push({text:v.text});
-      });
-      extra=arr;
-    },
-    ()=>{}
-  );
 })();
+
 </script>
+
 </body>
 </html>
