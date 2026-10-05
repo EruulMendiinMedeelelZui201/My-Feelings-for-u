@@ -486,7 +486,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{
 
 <!-- Firebase SDK (compat) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 /* BACKGROUND */
@@ -684,7 +684,7 @@ async function removeSaved(id){
   saved=saved.filter(item=>item.id!==id);
   renderSaved();
   if(db){
-    try{await db.doc("saved/"+id).delete()}
+    try{await db.ref("saved/"+id).remove()}
     catch(e){}
   }else{
     st("saved",saved);
@@ -695,7 +695,7 @@ async function saveNote(text){
   const id="n"+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
   if(db){
     try{
-      await db.doc("saved/"+id).set({text,n:Date.now()});
+      await db.ref("saved/"+id).set({text,n:Date.now()});
       return;
     }catch(e){
       db=null;
@@ -722,7 +722,7 @@ $("save").addEventListener("click",async()=>{
   showNote(text);
   if(db){
     try{
-      await db.doc("jar/j"+Date.now().toString(36)).set({text,n:Date.now()});
+      await db.ref("jar/j"+Date.now().toString(36)).set({text,n:Date.now()});
       return;
     }catch(e){}
   }
@@ -743,13 +743,14 @@ const firebaseConfig = {
   projectId: "database-885a6",
   storageBucket: "database-885a6.firebasestorage.app",
   messagingSenderId: "789657325749",
-  appId: "1:789657325749:web:e9222f5367227f6caeaefc"
+  appId: "1:789657325749:web:e9222f5367227f6caeaefc",
+  databaseURL: "https://database-885a6-default-rtdb.firebaseio.com"
 };
 
 (async()=>{
   try{
     firebase.initializeApp(firebaseConfig);
-    db=firebase.firestore();
+    db=firebase.database();
   }catch(e){db=null}
 
   if(!db){
@@ -757,9 +758,14 @@ const firebaseConfig = {
     return;
   }
 
-  db.collection("saved").orderBy("n","desc").onSnapshot(
+  db.ref("saved").orderByChild("n").on("value",
     snap=>{
-      saved=snap.docs.map(d=>({id:d.id,text:d.data().text}));
+      const arr=[];
+      snap.forEach(child=>{
+        const v=child.val();
+        if(v&&typeof v.text==="string")arr.push({id:child.key,text:v.text});
+      });
+      saved=arr.reverse(); /* newest first */
       renderSaved();
     },
     ()=>{
@@ -770,9 +776,14 @@ const firebaseConfig = {
     }
   );
 
-  db.collection("jar").orderBy("n","asc").onSnapshot(
+  db.ref("jar").orderByChild("n").on("value",
     snap=>{
-      extra=snap.docs.map(d=>({text:d.data().text}));
+      const arr=[];
+      snap.forEach(child=>{
+        const v=child.val();
+        if(v&&typeof v.text==="string")arr.push({text:v.text});
+      });
+      extra=arr;
     },
     ()=>{}
   );
